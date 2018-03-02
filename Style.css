@@ -15,3 +15,7 @@ h1 {
 #staticRocket {
     background-image: url("rocket-launchBG.jpg");
 }
+
+#animatedRocket {
+    border: 1px solid blue;
+}
