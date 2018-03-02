@@ -51,4 +51,4 @@ setInterval(function(){
     drawRocket(270);
     y++;
 
-}, 300);
+}, 200);
