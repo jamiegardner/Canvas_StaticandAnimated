@@ -1,10 +1,17 @@
 body {
-    margin: 0;
-    padding: 0;
+    width: 100%;
 }
 
-#rocket {
-    margin-left: 20px;
-    margin-top: 30px;
-    background-color: #15294e;
+h1 {
+    text-align: center;
+    font-size: 3em;
+    font-family: "Bell MT", Arial, sans-serif;
+    background-color: #C0C0C0;
+    width: 1024px;
+    height: 1.3em;
+    text-decoration: underline #f00;
+}
+
+#staticRocket {
+    background-image: url("rocket-launchBG.jpg");
 }
