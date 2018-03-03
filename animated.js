@@ -1,54 +1,90 @@
 var c = document.getElementById("animatedRocket");
 var ctx = c.getContext("2d");
 
-function drawRocket(){
-    <!-- Rocket Body -->
-    ctx.beginPath();
-    ctx.moveTo(263, 365); // Startpoint (x, y)
-    ctx.quadraticCurveTo(256, 331, 274, 264); // (Control point, control point, end(x, y))
-    ctx.quadraticCurveTo(295, 331, 285, 365);
-    ctx.lineTo(263, 365);
-    ctx.fillStyle = "#f00";
-    ctx.fill();
-    ctx.closePath();
+    // Variables for animating the rocket body
+    var y1 = 365;
+    var y2 = 264;
+    var y3 = 331;
 
-    <!-- Rocket Leftwing -->
-    ctx.beginPath();
-    ctx.moveTo(260, 332); // Startpoint (x, y)
-    ctx.quadraticCurveTo(242, 343, 242, 376); // (Control point, control point, end(x, y))
-    ctx.quadraticCurveTo(251, 366, 260, 360);
-    ctx.fillStyle = "#f00";
-    ctx.fill();
-    ctx.closePath();
+    // Variables for animating the rocket left-wing
+    var y4 = 332;
+    var y5 = 343;
+    var y6 = 376;
+    var y7 = 366;
+    var y8 = 360;
 
-    <!-- Rocket Rightwing -->
-    ctx.beginPath();
-    ctx.moveTo(290, 332); // Startpoint (x, y)
-    ctx.quadraticCurveTo(307, 343, 306, 376); // (Control point, control point, end(x, y))
-    ctx.quadraticCurveTo(298, 367, 288, 361);
-    ctx.fillStyle = "#f00";
-    ctx.fill();
-    ctx.closePath();
+    // Variables for animating the rocket right-wing
+    var y9 = 367;
+    var y10 = 361;
 
-    <!-- Rocket Flame -->
-    ctx.beginPath();
-    ctx.moveTo(274, 368); // Startpoint (x, y)
-    ctx.quadraticCurveTo(253, 385, 274, 398);
-    ctx.quadraticCurveTo(294, 385, 274, 368); // (Control point, control point, end(x, y))
-    ctx.fillStyle = "#f00";
-    ctx.fill();
-    ctx.closePath();
+    // Variables for animating the rocket flame
+    var y11 = 368;
+    var y12 = 385;
+    var y13 = 398;
 
-}
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0,0,c.width,c.height);
 
-var x = 400;
-var y = 0;
-setInterval(function(){
-    drawRocket(10);
-    ctx.clearRect(0,0,550,400);
-    x++;
+        <!-- Rocket Body -->
+        ctx.beginPath();
+        ctx.moveTo(263,y1); // Startpoint (x, y)
+        ctx.quadraticCurveTo(256, y3, 274, y2); // (Control point, control point, end(x, y))
+        ctx.quadraticCurveTo(295, y3, 285, y1);
+        ctx.lineTo(263, y1); // Endpoint (x, y)
+        ctx.fillStyle = "#fff";
+        ctx.fill();
+        ctx.closePath();
 
-    drawRocket(270);
-    y++;
+        <!-- Rocket Left-wing -->
+        ctx.beginPath();
+        ctx.moveTo(260, y4);
+        ctx.quadraticCurveTo(242, y5, 242, y6);
+        ctx.quadraticCurveTo(251, y7, 260, y8);
+        ctx.fillStyle = "#1883ad";
+        ctx.fill();
+        ctx.closePath();
 
-}, 200);
+        <!-- Rocket Right-wing -->
+        ctx.beginPath();
+        ctx.moveTo(290, y4);
+        ctx.quadraticCurveTo(307, y5, 306, y6); // y values used twice as they're same as left-wing value
+        ctx.quadraticCurveTo(298, y9, 288, y10);
+        ctx.fillStyle = "#1883ad";
+        ctx.fill();
+        ctx.closePath();
+
+        <!-- Rocket Flame -->
+        ctx.beginPath();
+        ctx.moveTo(274, y11);
+        ctx.quadraticCurveTo(253, y12, 274, y13);
+        ctx.quadraticCurveTo(294, y12, 274, y11);
+        ctx.fillStyle = "#e47d42";
+        ctx.fill();
+        ctx.closePath();
+
+        var s = -0.3; // Variable to hold the positive speed of the rocket
+
+        // Animating the rocket body onto canvas
+        y1 += s;
+        y2 += s;
+        y3 += s;
+
+        // Animating the rocket left-wing onto canvas
+        y4 += s;
+        y5 += s;
+        y6 += s;
+        y7 += s;
+        y8 += s;
+
+        // Animating the rocket right-wing onto canvas
+        y9 += s;
+        y10 += s;
+
+        // Animating the rocket flame onto canvas
+        y11 += s;
+        y12 += s;
+        y13 += s;
+    }
+
+    animate();
